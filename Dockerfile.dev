@@ -1,0 +1,12 @@
+FROM ruby:3.4
+ENV LANG C.UTF-8
+ENV TZ Asia/Tokyo
+
+# Node.jsとyarn、必要なツールをインストール
+# ※ npm install -g yarn を追加して、コマンド不在エラーを防止
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs build-essential libpq-dev vim \
+    && npm install -g yarn
+
+RUN mkdir /myapp
+WORKDIR /myapp
