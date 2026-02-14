@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    
+
     # ユーザーが存在し、かつパスワードが正しいかチェック
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id # ブラウザのCookieにユーザーIDを保存
