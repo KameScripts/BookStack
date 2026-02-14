@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Books" %>
+
+<div id="books">
+  <% @books.each do |book| %>
+    <%= render book %>
+    <p class="inline-flex h-8 items-center justify-center rounded-md bg-neutral-950 px-10 mb-2 font-medium text-neutral-50 transition active:scale-75 cursor-pointer transition hover:bg-neutral-600 ">
+      <%= link_to "詳細", book %>
+    </p>
+  <% end %>
+</div>
