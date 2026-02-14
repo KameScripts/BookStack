@@ -1,0 +1,45 @@
+<%= form_with(model: book) do |form| %>
+  <% if book.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+      <ul>
+        <% book.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p class="bold text-3xl">新規登録</p>
+
+  <div >
+    <%= form.label :タイトル, style: "display: block" %>
+    <div class="border border-gray-400 rounded-md px-3 py-2 mb-2 w-full">
+      <%= form.text_field :title %>
+    </div>
+  </div>
+
+  <div>
+    <%= form.label :おすすめ度, style: "display: block" %>
+    <div class="border border-gray-400 rounded-md px-3 py-2 mb-2 w-full">
+      <%= form.number_field :rating %>
+    </div>
+
+  <div>
+    <%= form.label :一言メモ, style: "display: block" %>
+    <div class="border border-gray-400 rounded-md px-3 py-2 mb-2 w-full">
+      <%= form.textarea :memo %>
+    </div>
+  </div>
+
+  <div>
+    <%= form.label :読了日, style: "display: block" %>
+    <div class="border border-gray-400 rounded-md px-3 py-2 mb-2 w-full">
+      <%= form.date_field :read_at %>
+    </div>
+  </div>
+
+  <div class="inline-flex h-10 items-center justify-center rounded-md bg-neutral-950 px-6 font-medium text-neutral-50 cursor-pointer transition hover:bg-neutral-600 transition active:scale-75">
+    <%= form.submit "登録" %>
+  </div>
+<% end %>
